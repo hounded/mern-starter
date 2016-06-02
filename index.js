@@ -4,6 +4,7 @@
 // if (process.env.NODE_ENV === 'production') {
 //   require('./dist/server.bundle.js');
 // }
+//test text
 
 
 // Ignore css and image files in babel
