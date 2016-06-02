@@ -6,7 +6,7 @@ import routes from './routes';
 //Material UI
 import muiTheme from '../muiTheme.js'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
+
 
 // Base stylesheet
 require('./main.css');

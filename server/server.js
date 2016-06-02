@@ -123,20 +123,12 @@ app.use((req, res, next) => {
       return next();
     }
 
-    const muiTheme = getMuiTheme(lightBaseTheme,{
-      palette: {
-        primary1Color: blue500,
-        primary2Color: blue700,
-        primary3Color: blue100
-      },
-      userAgent: req.headers['user-agent']
-    });
 
-    //const muiTheme = getMuiTheme(
-    //    muiTheme,{
-    //      userAgent: req.headers['user-agent'],
-    //    }
-    //);
+    const muiTheme = getMuiTheme(
+        muiTheme,{
+          userAgent: req.headers['user-agent'],
+        }
+    );
 
     const store = configureStore();
 
