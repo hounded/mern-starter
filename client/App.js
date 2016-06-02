@@ -3,17 +3,25 @@ import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import routes from './routes';
 
+//Material UI
+import muiTheme from '../muiTheme.js'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+
 // Base stylesheet
 require('./main.css');
-
 const history = browserHistory;
+
+
 
 export default function App(props) {
   return (
     <Provider store={props.store}>
-      <Router history={history}>
-        {routes}
-      </Router>
+      <MuiThemeProvider muiTheme={muiTheme}>
+        <Router history={history}>
+          {routes}
+        </Router>
+      </MuiThemeProvider>
     </Provider>
   );
 }

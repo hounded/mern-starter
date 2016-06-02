@@ -1,9 +1,10 @@
 import React, { PropTypes } from 'react';
 import PostListItem from './PostListItem/PostListItem';
+import {List, ListItem} from 'material-ui/List';
 
 function PostList(props) {
   return (
-    <div className="listView">
+    <List>
       {
         props.posts.map((post, i) => (
           <PostListItem
@@ -14,7 +15,7 @@ function PostList(props) {
           />
         ))
       }
-    </div>
+    </List>
   );
 }
 

@@ -11,7 +11,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 
 // Import Actions
-import { toggleAddPost } from './AppActions';
+import { toggleAddPost, handleDrawPosition } from './AppActions';
 
 class App extends Component {
   constructor(props) {
@@ -25,6 +25,10 @@ class App extends Component {
 
   toggleAddPostSection = () => {
     this.props.dispatch(toggleAddPost());
+  };
+
+  handleDraw = () => {
+    this.props.dispatch(handleDrawPosition());
   };
 
   render() {
@@ -47,7 +51,7 @@ class App extends Component {
               },
             ]}
           />
-          <Header toggleAddPost={this.toggleAddPostSection} />
+          <Header toggleAddPost={this.toggleAddPostSection} onDraw={this.handleDraw} drawPos={this.props.drawPos} />
           <div className={styles.container}>
             {this.props.children}
           </div>
@@ -62,5 +66,11 @@ App.propTypes = {
   children: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
 };
+function mapStateToProps(store) {
+  return {
+    drawPos: store.app.drawPosition
+  };
+}
 
-export default connect()(App);
+
+export default connect(mapStateToProps)(App);

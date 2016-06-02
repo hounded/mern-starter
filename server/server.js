@@ -33,6 +33,19 @@ import posts from './routes/post.routes';
 import dummyData from './dummyData';
 import serverConfig from './config';
 
+//Material UI
+import muiTheme from '../muiTheme.js'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import {
+    blue500, blue700,blue100,
+    grey100, grey300, grey400, grey500,
+    pinkA200,
+    white, darkBlack, fullBlack,
+} from 'material-ui/styles/colors';
+
+
 // MongoDB Connection
 mongoose.connect(serverConfig.mongoURL, (error) => {
   if (error) {
@@ -110,13 +123,30 @@ app.use((req, res, next) => {
       return next();
     }
 
+    const muiTheme = getMuiTheme(lightBaseTheme,{
+      palette: {
+        primary1Color: blue500,
+        primary2Color: blue700,
+        primary3Color: blue100
+      },
+      userAgent: req.headers['user-agent']
+    });
+
+    //const muiTheme = getMuiTheme(
+    //    muiTheme,{
+    //      userAgent: req.headers['user-agent'],
+    //    }
+    //);
+
     const store = configureStore();
 
     return fetchComponentData(store, renderProps.components, renderProps.params)
       .then(() => {
         const initialView = renderToString(
           <Provider store={store}>
-            <RouterContext {...renderProps} />
+            <MuiThemeProvider muiTheme={muiTheme}>
+              <RouterContext {...renderProps} />
+            </MuiThemeProvider>
           </Provider>
         );
         const finalState = store.getState();
