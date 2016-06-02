@@ -37,13 +37,7 @@ import serverConfig from './config';
 import muiTheme from '../muiTheme.js'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
-import {
-    blue500, blue700,blue100,
-    grey100, grey300, grey400, grey500,
-    pinkA200,
-    white, darkBlack, fullBlack,
-} from 'material-ui/styles/colors';
+
 
 
 // MongoDB Connection
