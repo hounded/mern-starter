@@ -3,6 +3,11 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import path from 'path';
 
+//password
+import session from 'express-session';
+import MongoStore from 'connect-mongo';
+MongoStore(session);
+
 // Webpack Requirements
 import webpack from 'webpack';
 import config from '../webpack.config.dev';
@@ -34,7 +39,7 @@ import dummyData from './dummyData';
 import serverConfig from './config';
 
 //Material UI
-import muiTheme from '../muiTheme.js'
+import muiThemed from '../muiTheme.js'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
@@ -62,6 +67,9 @@ app.use(bodyParser.json({ limit: '20mb' }));
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
 app.use(Express.static(path.resolve(__dirname, '../dist')));
 app.use('/api', posts);
+
+//express-session
+
 
 // Render Initial HTML
 const renderFullPage = (html, initialState) => {
@@ -125,8 +133,8 @@ app.use((req, res, next) => {
 
 
     const muiTheme = getMuiTheme(
-        muiTheme,{
-          userAgent: req.headers['user-agent'],
+        muiThemed,{
+          userAgent: req.headers['User-Agent'],
         }
     );
 

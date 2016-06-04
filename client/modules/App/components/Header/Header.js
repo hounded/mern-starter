@@ -11,9 +11,7 @@ import {blue50, white, lightBlack} from 'material-ui/styles/colors';
 
 function Header(props, context) {
   return (
-
     <div>
-
         {
             context.router.isActive('/', true) ?
                 <AppBar
@@ -37,6 +35,7 @@ function Header(props, context) {
             onLeftIconButtonTouchTap ={props.onDraw}
             />
         <MenuItem containerElement={<Link to="/" />} onTouchTap={props.onDraw}>Home</MenuItem>
+        <MenuItem containerElement={<Link to="/login" />} onTouchTap={props.onDraw}>Login</MenuItem>
       </Drawer>
     </div>
   );
